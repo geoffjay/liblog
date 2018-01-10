@@ -1,0 +1,4 @@
+[wrap-git]
+directory=liblog
+url=https://github.com/geoffjay/liblog.git
+revision=head
