@@ -29,8 +29,7 @@ public class Log.Context {
         return verbosity;
     }
 
-    private void _log (int level, string fmt, ...) {
-        var list = va_list ();
+    private void _log (int level, string fmt, va_list list) {
         string tag;
 
         switch (level) {
