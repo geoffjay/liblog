@@ -29,6 +29,46 @@ public class Log.Context {
         return verbosity;
     }
 
+    /**
+     * Retrieves a log level as a string.
+     *
+     * @param log_level Log level flags
+     *
+     * @return A string which shouldn't be modified or freed.
+     */
+    private static string level_str (Log.Level log_level) {
+        switch ((ulong) log_level) {
+            case Log.Level.ERROR:    return "   ERROR";
+            case Log.Level.CRITICAL: return "CRITICAL";
+            case Log.Level.WARNING:  return " WARNING";
+            case Log.Level.MESSAGE:  return " MESSAGE";
+            case Log.Level.INFO:     return "    INFO";
+            case Log.Level.DEBUG:    return "   DEBUG";
+            case Log.Level.TRACE:    return "   TRACE";
+            default:                 return " UNKNOWN";
+        }
+    }
+
+    /**
+     * Retrieves a log  level as a term coloured string.
+     *
+     * @param log_level Log level flags
+     *
+     * @return A string which shouldn't be modified or freed.
+     */
+    private static string level_str_with_color (Log.Level log_level) {
+        switch ((ulong) log_level) {
+            case Log.Level.ERROR:    return "   \033[1;31mERROR\033[0m";
+            case Log.Level.CRITICAL: return "\033[1;35mCRITICAL\033[0m";
+            case Log.Level.WARNING:  return " \033[1;33mWARNING\033[0m";
+            case Log.Level.MESSAGE:  return " \033[1;32mMESSAGE\033[0m";
+            case Log.Level.INFO:     return "    \033[1;32mINFO\033[0m";
+            case Log.Level.DEBUG:    return "   \033[1;32mDEBUG\033[0m";
+            case Log.Level.TRACE:    return "   \033[1;36mTRACE\033[0m";
+            default:                return " UNKNOWN";
+        }
+    }
+
     private void _log (int level, string fmt, va_list list) {
         string tag;
 
